@@ -11,6 +11,7 @@ import SmallScreenModal from "./SmallScreenModal"
 import Footer from "./Footer"
 import { remember, readSession } from 'utils/session'
 import { SERVER_URL } from 'utils/socket'
+import { apiReply } from 'utils/apiReply'
 
 export default function Lobby({ room }: { room?: string }) {
   useLanguage()
@@ -36,8 +37,8 @@ export default function Lobby({ room }: { room?: string }) {
     if (room) {
       try {
         const res = await fetch(`${SERVER_URL}/api/game?room=${encodeURIComponent(room)}`)
-        if(!res.ok){const reply=await res.json();throw new Error(reply.error||'Не удалось открыть комнату.')}
-        const usersInRoom = await res.json()
+        const usersInRoom = await apiReply(res)
+        if(!res.ok)throw new Error(usersInRoom.error||'Не удалось открыть комнату.')
         if (usersInRoom.find((u) => u.name === username)) {
           throw new Error("There is already a user with this name in the room.")
         }

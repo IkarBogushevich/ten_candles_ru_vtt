@@ -16,6 +16,7 @@ document.documentElement.lang = language
 document.title = language === "ru" ? "Десять свечей | Виртуальный стол" : "Ten Candles | Virtual Tabletop"
 
 const ru: Record<string, string> = {
+  "Connection lost. Reconnecting. Your session and notes are saved.": "Соединение потеряно. Переподключаемся. Вход и записки сохранены.",
   "Return to my room": "Вернуться в мою комнату",
   "Invalid session. Reopen your room link.": "Не удалось восстановить вход. Откройте ссылку комнаты заново.",
   "This seat belongs to another session.": "Личный ключ не подходит к этому месту. Данные сохранены; проверьте ссылку и браузер.",

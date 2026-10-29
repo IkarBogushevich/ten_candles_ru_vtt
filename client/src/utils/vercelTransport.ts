@@ -1,3 +1,4 @@
+import { apiReply } from './apiReply'
 type Listener = (data?: any) => void
 type Credentials = {room:string;user:{id:string;name:string};resumeToken:string}
 
@@ -47,7 +48,7 @@ export default class VercelTransport {
           method:'POST',headers:{'Content-Type':'application/json'},cache:'no-store',
           body:JSON.stringify({...credentials,kind,after:this.cursor,...action}),signal:AbortSignal.timeout(12000),
         })
-        const reply=await res.json()
+        const reply=await apiReply(res)
         if(epoch!==this.epoch||!this.active)return
         if(!res.ok){
           const error=reply.error||'Сервер временно недоступен.'

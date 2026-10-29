@@ -67,8 +67,8 @@ export default function Room() {
 
       socket.on("disconnect", () => {
         toast(
-          "You've been disconnected. Try refreshing the page and joining again with the same username. If you use a different username, you'll lose your cards.",
-          { duration: Infinity }
+          "Connection lost. Reconnecting. Your session and notes are saved.",
+          { duration: Infinity, id:'table-connection' }
         )
       })
     }
@@ -91,9 +91,10 @@ export default function Room() {
       setCandles(next.map(c => c.startedAt !== null))
     })
     socket.on('roomSnapshot', snapshot=>{
+      toast.dismiss('table-connection');toast.dismiss('table-api-error')
       setUser(snapshot.user);setDicePools(snapshot.dicePools);setCandles(snapshot.candles);setAreCardsLocked(snapshot.areCardsLocked)
     })
-    socket.on('sessionError',({message})=>toast(message,{duration:Infinity}))
+    socket.on('sessionError',({message})=>toast(message,{duration:Infinity,id:'table-api-error'}))
     function syncInitialState() {
       // The server owns the table. A reconnect must never overwrite it with defaults.
     }
