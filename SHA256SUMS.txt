@@ -1,0 +1,2 @@
+d75a616d49743339a0ffef9f2cd6e37d3de9af834e1ad64573b9d4bc19d8edb8  Ten-Candles-Original-Windows-1.1.0.zip
+69cb6deb1ca08b5c8ee72147814d5450f982a7f28061a66dc95b3b63d9c95afa  Ten-Candles-Vercel-1.1.0.zip

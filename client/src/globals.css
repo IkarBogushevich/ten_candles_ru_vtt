@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "PixeloidSans";
+  src: url("/fonts/PixeloidSans-mLxMm.ttf");
+}
+
+@font-face {
+  font-family: "Verdana";
+  src: url("/fonts/verdana.ttf");
+}
+
+:root {
+  color-scheme: only dark;
+}
+
+body,
+html {
+  @apply h-screen w-screen overflow-hidden;
+}
+
+html {
+  @apply font-pixel text-[16px];
+  font-family: "PixeloidSans", "Verdana", sans-serif;
+}
+
+#root {
+  @apply bg-black text-white h-screen w-screen flex justify-center items-center overflow-hidden;
+}
+
+ul {
+  @apply list-disc space-y-3 ml-4;
+}
+
+.btn {
+  @apply text-lg px-4 py-2 hover:brightness-125 disabled:opacity-60 disabled:hover:brightness-100;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-[#7e7a7a] rounded-full hover:bg-[#5b5a6b];
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-[#342c29];
+}
+
+:root {
+  --reactour-accent: theme("colors.yellow");
+}
+
+.reactour__popover {
+  @apply !bg-grey !p-5 !pr-7 !max-w-[400px] border-4 border-yellow font-sans;
+}
+
+.reactour__close-button {
+  @apply !top-[18px] !right-[18px];
+}
+
+/* Pool boundaries are table geometry, independent of translated label widths. */
+.dice-table {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px;
+  grid-template-rows: minmax(0, 1fr);
+}
+.dice-main {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+.dice-main > .dice-pool_player,
+.dice-main > .dice-pool_gm {
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+}
+.dice-pool-heading {
+  min-height: 48px;
+}
+.dice-main .dice-pool-heading h2 {
+  white-space: nowrap;
+  flex: 0 0 184px;
+  width: 184px;
+}
+.dice-roll {
+  flex: 0 0 128px;
+  width: 128px;
+  white-space: nowrap;
+}
+.dice-pool_stash {
+  min-width: 0;
+}
+.candle-sprite,
+.candle-sprite * {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}

@@ -1,0 +1,9 @@
+server
+tools
+data
+qa
+**/node_modules
+**/dist
+*.zip
+*.py
+*.mjs

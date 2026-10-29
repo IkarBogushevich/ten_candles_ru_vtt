@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: only dark;
+}
+
+body,
+html {
+  @apply h-screen w-screen overflow-hidden;
+}
+
+html {
+  @apply text-[16px];
+}
+
+#root {
+  @apply bg-black text-white h-screen w-screen flex justify-center items-center overflow-hidden;
+}
+
+ul {
+  @apply list-disc space-y-3 ml-4;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-[#7e7a7a] rounded-full hover:bg-[#5b5a6b];
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-[#342c29];
+}
+
+:root {
+  --reactour-accent: theme("colors.yellow");
+}
+
+.reactour__popover {
+  @apply !bg-grey !p-5 !pr-7 !max-w-[400px] border-4 border-yellow font-sans;
+}
+
+.reactour__close-button {
+  @apply !top-[18px] !right-[18px];
+}
