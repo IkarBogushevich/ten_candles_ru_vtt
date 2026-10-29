@@ -1,6 +1,6 @@
-import { io } from "socket.io-client"
+import VercelTransport from './vercelTransport'
 
-export const SERVER_URL = (import.meta.env.VITE_SERVER_URL || window.location.origin).replace(/\/+$/, "")
-const socket = io(SERVER_URL, { autoConnect: false })
+export const SERVER_URL = window.location.origin
+const socket = new VercelTransport()
 
 export default socket

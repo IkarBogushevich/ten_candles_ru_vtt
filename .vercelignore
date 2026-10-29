@@ -6,4 +6,7 @@ qa
 **/dist
 *.zip
 *.py
-*.mjs
+launch.mjs
+persistence-test.mjs
+test.mjs
+tests

@@ -35,7 +35,8 @@ export default function Lobby({ room }: { room?: string }) {
 
     if (room) {
       try {
-        const res = await fetch(`${SERVER_URL}/users?room=${encodeURIComponent(room)}`)
+        const res = await fetch(`${SERVER_URL}/api/game?room=${encodeURIComponent(room)}`)
+        if(!res.ok){const reply=await res.json();throw new Error(reply.error||'Не удалось открыть комнату.')}
         const usersInRoom = await res.json()
         if (usersInRoom.find((u) => u.name === username)) {
           throw new Error("There is already a user with this name in the room.")

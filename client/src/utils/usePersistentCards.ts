@@ -14,7 +14,8 @@ export default function usePersistentCards(room:string|undefined,id:string|undef
     function snapshot(data:{cards:Card[];revision:number}){
       if(!ready.current){
         const backup=cache();revision.current=data.revision;ready.current=true
-        if(backup?.dirty&&backup.revision===data.revision){pending.current=backup.cards;applied.current=JSON.stringify(backup.cards);setCards(backup.cards);flush();return}
+        const firstCloudSave=data.revision===0&&data.cards.length===0&&backup?.cards?.length>0
+        if(firstCloudSave||(backup?.dirty&&backup.revision===data.revision)){pending.current=backup.cards;applied.current=JSON.stringify(backup.cards);setCards(backup.cards);flush();return}
         if(backup?.dirty&&JSON.stringify(backup.cards)!==JSON.stringify(data.cards))localStorage.setItem(key+'_recovery',JSON.stringify(backup))
       }
       revision.current=data.revision;flight.current=null

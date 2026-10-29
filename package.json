@@ -1,0 +1,11 @@
+{
+  "name": "ten-candles-ru-vercel",
+  "version": "1.2.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "22.x" },
+  "scripts": {
+    "build": "npm --prefix client run build",
+    "test": "node --test tests/vercel.test.mjs"
+  }
+}
